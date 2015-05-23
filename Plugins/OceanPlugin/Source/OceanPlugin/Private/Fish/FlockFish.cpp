@@ -307,9 +307,12 @@ void AFlockFish::Setup()
 		minY = underwaterMin.Y;
 
 		InteractionSphereRadius = FishInteractionSphere->GetScaledSphereRadius();
-
-		if (CustomZSeekMax == NULL)
-		{
+#if PLATFORM_LINUX
+        if (CustomZSeekMax == 0.0f)
+#else
+        if (CustomZSeekMax == NULL)
+#endif
+        {
 			minZ = underwaterMin.Z;
 			maxZ = underwaterMax.Z;
 		}

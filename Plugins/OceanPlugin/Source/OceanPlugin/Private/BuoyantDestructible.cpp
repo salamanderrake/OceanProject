@@ -4,7 +4,7 @@
 // PhysX 			
 #include "PhysXIncludes.h" 
 #include "PhysicsPublic.h"
- 
+
 ABuoyantDestructible::ABuoyantDestructible(const class FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	PrimaryActorTick.bCanEverTick = true; //Duh!
@@ -52,7 +52,7 @@ void ABuoyantDestructible::Tick(float DeltaTime)
 
 	float Gravity = DestructibleComponent->GetPhysicsVolume()->GetGravityZ();
 
-	TestPointRadius = abs(TestPointRadius);
+    TestPointRadius = FMath::Abs(TestPointRadius);
 
 	//Signed based on gravity, just in case we need an upside down world
 	_SignedRadius = FMath::Sign(Gravity) * TestPointRadius;
@@ -60,7 +60,7 @@ void ABuoyantDestructible::Tick(float DeltaTime)
 	#if WITH_PHYSX
 	for(FDestructibleChunkInfo& Each : DestructibleComponent->ChunkInfos)
 	{
-		physx::PxRigidDynamic* Chunk = Each.Actor;
+        physx::PxRigidDynamic* Chunk = DestructibleComponent->ApexDestructibleActor->getChunkPhysXActor(Each.ChunkIndex);
  
 		if (Chunk)
 		{    

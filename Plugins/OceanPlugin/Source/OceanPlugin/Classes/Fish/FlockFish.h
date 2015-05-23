@@ -112,11 +112,19 @@ public:
 
 	// Custom Z range for targeting (NULL will use full range of min/max)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
-	float CustomZSeekMin = NULL;
+#if PLATFORM_LINUX
+    float CustomZSeekMin = 0.0f;
+#else
+    float CustomZSeekMin = NULL;
+#endif
 
 	// Custom Z range for targeting (NULL will use full range of min/max)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
-	float CustomZSeekMax = NULL;
+#if PLATFORM_LINUX
+    float CustomZSeekMax = 0.0f;
+#else
+    float CustomZSeekMax = NULL;
+#endif
 
 	// Max number of neighbors to evaluate on a Tick (0 for all neighbors)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optimization")
