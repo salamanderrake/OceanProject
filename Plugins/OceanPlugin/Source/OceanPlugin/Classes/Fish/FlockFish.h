@@ -110,19 +110,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
 	FVector underwaterMax = FVector(40000, 40000, -950);
 
-	// Custom Z range for targeting (NULL will use full range of min/max)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
 #if PLATFORM_LINUX
+    // Custom Z range for targeting (0.0f will use full range of min/max)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
     float CustomZSeekMin = 0.0f;
 #else
+    // Custom Z range for targeting (NULL will use full range of min/max)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
     float CustomZSeekMin = NULL;
 #endif
 
-	// Custom Z range for targeting (NULL will use full range of min/max)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
 #if PLATFORM_LINUX
+    // Custom Z range for targeting (0.0f will use full range of min/max)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
     float CustomZSeekMax = 0.0f;
 #else
+    // Custom Z range for targeting (NULL will use full range of min/max)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Variables")
     float CustomZSeekMax = NULL;
 #endif
 
